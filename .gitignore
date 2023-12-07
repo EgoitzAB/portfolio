@@ -1,0 +1,19 @@
+# Ignoring environment variables
+
+.env
+*/.env
+/.env
+
+# Ignoring cache
+
+.__pycache__
+*/.__pycache__
+*.__pycache__
+/.__pycache__
+__pycache__
+#Ignoring migrations
+
+.migrations
+*/.migrations
+/.migrations
+migrations

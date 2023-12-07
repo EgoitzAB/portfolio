@@ -1,0 +1,25 @@
+{% extends 'pages/base.html' %}
+
+{% block description %}
+Página principal del portfolio de Egoitz Abilleira
+{% endblock description %}
+{% block title %}
+Egoitz Abilleira
+{% endblock title %}
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+<h1 class="opening-title">Bienvenido a la página de inicio</h1>
+{% for seccion in secciones %}
+    <section class="opening-section">
+        <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
+        <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
+        <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+    </section>
+{% endfor %}
+
+{% endblock content %}
+{% block javascript %}
+{% endblock javascript %}
+

@@ -1,0 +1,145 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+.checkbtn {
+	font-size: 30px;
+	color: #fff;
+	float: right;
+	line-height: 80px;
+	margin-right: 40px;
+	cursor: pointer;
+	display: none;
+}
+
+#check {
+	display: none;
+}
+
+.enlace {
+	position: absolute;
+	padding: 20px 50px;
+}
+
+.home-image {
+	height: auto;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 100%;
+	display: block;
+}
+
+.logo {
+	height: 40px;
+}
+
+nav ul {
+	float: right;
+	margin-right: 20px;
+}
+
+nav ul li {
+	display: inline-block;
+	line-height: 80px;
+	margin: 0 5px;
+}
+
+nav ul li a {
+	color: #fff;
+	font-size: 18px;
+	padding: 7px 13px;
+	border-radius: 3px;
+	text-transform: uppercase;
+}
+
+nav {
+	background: linear-gradient(#0a8899, #05f197);
+	height: 80px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+li a.active, li a:hover {
+	background: #4f4f5a;
+	transition: 0.5s;
+}
+
+.opening-title {
+	font-size: 3rem;
+	font-family: 'Courier New', Courier, monospace;
+	color: green;
+	text-align: center;
+	margin-top: 10%;
+}
+.opening-section-title {
+	font-size: 2rem;
+	font-family: Arial, sans-serif;
+	color: blue;
+	text-align: center;
+	margin-top: 7%;
+	text-indent: 2em;
+	padding: 1em;
+}
+
+.opening-section-text {
+	font-size: 1.2rem;
+	font-family: 'Arial', sans-serif;
+	color: #333;
+	text-align: left;
+	margin-top: 1%;
+	line-height: 1.5;
+	text-indent: 2em;
+	padding: 1em;
+}
+
+@media (max-width: 952px) {
+	.enlace {
+	padding-left: 20px;
+	}
+	nav ul li a {
+	font-size: 16px;
+	}
+}
+@media (max-width: 858px) {
+	.checkbtn {
+	display: block;
+	}
+
+	ul {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: #04110f;
+	top: 80px;
+	left: -100%;
+	text-align: center;
+	transition: all 0.5s;
+	opacity: 0.9;
+	}
+	nav {
+	position: relative;
+	}
+	nav ul li {
+	display: block;
+	margin: 50px;
+	line-height: 30px;
+	}
+
+	nav ul li a {
+	font-size: 20px;
+	}
+
+	li a:hover,	li a:active {
+	background: none;
+	color: red;
+	}
+
+	#check:checked ~ ul {
+	left: 0;
+	}
+}
