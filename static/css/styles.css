@@ -121,8 +121,17 @@ li a.active, li a:hover {
 	transition: all 0.5s;
 	opacity: 0.9;
 	}
+
+@media (max-width: 858px) {
+	.opening-title {
+		font-size: 2rem;
+		margin-top: calc(15% + 80px);
+	}
+
 	nav {
-	position: relative;
+		position: fixed;
+		}
+
 	}
 	nav ul li {
 	display: block;

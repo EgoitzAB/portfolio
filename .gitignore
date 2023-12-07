@@ -17,3 +17,11 @@ __pycache__
 */.migrations
 /.migrations
 migrations
+
+# Ignoring static files
+static
+./static
+*/static
+staticfiles
+./staticfiles
+*./staticfiles

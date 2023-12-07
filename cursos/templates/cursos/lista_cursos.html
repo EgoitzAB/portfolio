@@ -1,0 +1,30 @@
+
+{% extends 'pages/base.html' %}
+
+{% block description %}
+Cursos realizados por Egoitz Abilleira
+{% endblock description %}
+
+{% block title %}
+Cursos y Certificaciones
+{% endblock title %}
+
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+<h1>Listado de Cursos</h1>
+<ul>
+    {% for curso in cursos %}
+        <li>{{ curso.nombre }}</li>
+        <li>{{ curso.identificador }}</li>
+        <li>{{ curso.url }}</li>
+        <li>{{ curso.descripcion }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+{% block javascript %}
+{% endblock javascript %}
+
