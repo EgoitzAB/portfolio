@@ -12,7 +12,7 @@ This module defines the URL patterns for the cursos app. It includes the followi
 aap_name = 'cursos'
 
 urlpatterns = [
-    path('cursos/', CursosListView.as_view(), name='lista_cursos'),
+    path('', CursosListView.as_view(), name='lista_cursos'),
 ]
 
 

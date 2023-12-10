@@ -1,5 +1,5 @@
-
 {% extends 'pages/base.html' %}
+{% load static %}
 
 {% block description %}
 Cursos realizados por Egoitz Abilleira
@@ -14,17 +14,45 @@ Cursos y Certificaciones
 {% endblock navbar %}
 
 {% block content %}
-<h1>Listado de Cursos</h1>
-<ul>
-    {% for curso in cursos %}
-        <li>{{ curso.nombre }}</li>
-        <li>{{ curso.identificador }}</li>
-        <li>{{ curso.url }}</li>
-        <li>{{ curso.descripcion }}</li>
-    {% endfor %}
-</ul>
+<div id="content">
+    <h1>Listado de Cursos</h1>
+</div>
+
+    <div class="grid-container">
+        {% for curso in cursos %}
+            <div class="grid-item">
+                <h2>{{ curso.nombre }}</h2>
+                {% if curso.archivo %}
+                    <img class="curso-image" src="{{ curso.archivo.url }}" alt="{{ curso.nombre }}">
+                {% endif %}
+                <p>{{ curso.descripcion }}</p>
+                <p>El curso constaba de {{ curso.horas }} horas</p>
+                <p>La url para verificarlo es {{ curso.url }}</p>
+                <p>Habilidades conseguidas: {{curso.hablidades}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="pagination-button" href="?page=1">&laquo; Primera</a>
+            <a class="pagination-button" href="?page={{ page_obj.previous_page_number }}">Previa</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="pagination-button" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            <a class="pagination-button" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock content %}
 
 {% block javascript %}
 {% endblock javascript %}
-
