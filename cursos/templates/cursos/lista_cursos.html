@@ -4,7 +4,9 @@
 {% block description %}
 Cursos realizados por Egoitz Abilleira
 {% endblock description %}
-
+{% block extrahead %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock extrahead %}
 {% block title %}
 Cursos y Certificaciones
 {% endblock title %}
@@ -14,25 +16,31 @@ Cursos y Certificaciones
 {% endblock navbar %}
 
 {% block content %}
-<div id="content">
-    <h1>Listado de Cursos</h1>
-</div>
-
-    <div class="grid-container">
-        {% for curso in cursos %}
-            <div class="grid-item">
-                <h2>{{ curso.nombre }}</h2>
-                {% if curso.archivo %}
-                    <img class="curso-image" src="{{ curso.archivo.url }}" alt="{{ curso.nombre }}">
-                {% endif %}
-                <p>{{ curso.descripcion }}</p>
-                <p>El curso constaba de {{ curso.horas }} horas</p>
-                <p>La url para verificarlo es {{ curso.url }}</p>
-                <p>Habilidades conseguidas: {{curso.hablidades}}</p>
-            </div>
-        {% endfor %}
+<main id="content-main">
+    <div id="content">
+        <h1>Listado de Cursos</h1>
     </div>
 
+    <div class="grid-container">
+    {% for curso in cursos %}
+        <div class="grid-item">
+            <h2>{{ curso.nombre }}</h2>
+            {% if curso.archivo %}
+                <div class="curso-image-container">
+                    <img class="curso-image" src="{{ curso.archivo.url }}" alt="{{ curso.nombre }}" onclick="openModal('myModal{{ forloop.counter }}', '{{ curso.archivo.url }}', '{{ curso.nombre }}')">
+                </div>
+            {% endif %}
+            <!-- Resto del código -->
+        </div>
+        <div id="myModal{{ forloop.counter }}" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('myModal{{ forloop.counter }}')">&times;</span>
+                <img id="modalImage{{ forloop.counter }}" src="" alt="Modal Image">
+                <h2 id="modalTitle{{ forloop.counter }}"></h2>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
 <div class="pagination">
     <span class="step-links">
@@ -51,6 +59,7 @@ Cursos y Certificaciones
         {% endif %}
     </span>
 </div>
+</main>
 
 {% endblock content %}
 

@@ -38,15 +38,24 @@
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
-	gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
+	gap: 30px;
+	margin: 10vh 20vh 15vh 15vh;
 }
 
 .grid-item {
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.20);
+	max-height: 80vh; /* cambiar esto mañana, no funciona */
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
 }
+
+.grid-item:hover {
+    max-height: 100%;
+}
+
 .home-image {
 	height: auto;
 	justify-content: center;
@@ -60,32 +69,60 @@
 	height: 40px;
 }
 
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-.pagination .step-links a {
-    margin: 0 5px;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #333;
-    border-radius: 5px;
+#main-content {
+    margin: 0 auto;
+    padding: 0 5vw; /* Ajusta este valor a lo que necesites */
 }
 
-.pagination .step-links a:hover {
-    background-color: #f8f9fa;
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: hidden; /* Disable scroll on small screens */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.pagination .step-links .current {
-    margin: 0 5px;
-    padding: 10px 15px;
-    color: #fff;
-    background-color: #007bff;
-    border: 1px solid #007bff;
-    border-radius: 5px;
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	padding: 20px;
+	border: 1px solid #888;
+	width: auto;
+	max-width: 80vw;
+	height: auto;
+	max-height: 80vh;
+    overflow: auto;
+	box-sizing: border-box;
+}
+
+#modalImage {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 nav ul {
@@ -147,6 +184,33 @@ li a.active, li a:hover {
 	padding: 1em;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.pagination .step-links a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.pagination .step-links a:hover {
+    background-color: #f8f9fa;
+}
+
+.pagination .step-links .current {
+    margin: 0 5px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
 @media (max-width: 952px) {
 	.enlace {
 	padding-left: 20px;
@@ -156,7 +220,7 @@ li a.active, li a:hover {
 	}
 
 }
-@media (max-width: 858px) {
+@media (max-width: 768px) {
 	.checkbtn {
 	display: block;
 	}
@@ -172,6 +236,10 @@ li a.active, li a:hover {
 	transition: all 0.5s;
 	opacity: 0.9;
 	}
+
+	#main-content {
+        padding: 0 10px; /* Padding más pequeño para pantallas pequeñas */
+    }
 
 	.opening-title {
 		font-size: 2rem;
@@ -200,4 +268,11 @@ li a.active, li a:hover {
 	#check:checked ~ ul {
 	left: 0;
 	}
+}
+
+@media screen and (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        height: 50%;
+    }
 }

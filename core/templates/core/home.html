@@ -10,6 +10,7 @@ Egoitz Abilleira
 {% include 'pages/navbar.html' %}
 {% endblock navbar %}
 {% block content %}
+<main id="main-content">
 <h1 class="opening-title">Bienvenido a la página de inicio</h1>
 {% for seccion in secciones %}
     <section class="opening-section">
@@ -18,7 +19,7 @@ Egoitz Abilleira
         <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
     </section>
 {% endfor %}
-
+</main>
 {% endblock content %}
 {% block javascript %}
 {% endblock javascript %}

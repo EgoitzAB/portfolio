@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'core.apps.CoreConfig',
     'cursos.apps.CursosConfig',
+    'code_project.apps.CodeProjectConfig',
 ]
 
 MIDDLEWARE = [
