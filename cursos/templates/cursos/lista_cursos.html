@@ -41,24 +41,8 @@ Cursos y Certificaciones
         </div>
     {% endfor %}
     </div>
+{% include 'pages/pagination.html' %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a class="pagination-button" href="?page=1">&laquo; Primera</a>
-            <a class="pagination-button" href="?page={{ page_obj.previous_page_number }}">Previa</a>
-        {% endif %}
-
-        <span class="current">
-            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a class="pagination-button" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-            <a class="pagination-button" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
-        {% endif %}
-    </span>
-</div>
 </main>
 
 {% endblock content %}

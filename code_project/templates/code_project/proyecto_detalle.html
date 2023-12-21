@@ -1,0 +1,40 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block description %}
+Proyecto y códigos de Egoitz Abilleira
+{% endblock description %}
+{% block title %}
+Proyectos y Código
+{% endblock title %}
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+<main id="proyectos-main">
+    <h1 class="proyecto-title">{{ code.tipo_contenido | upper }} {{ code.status}}</h1>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <h2 class="proyecto-subtitle">{{ code.nombre }}</h2>
+            <p class="proyecto-text">Descripción: {{ code.descripcion }}</p>
+            <p class="proyecto-url">URL para ver el código completo: <a href="{{ code.url }}">{{ code.url }}</a></p>
+            {% for paso in code.codigo_set.all %}
+                <div class="paso">
+                    <h3>Paso {{ forloop.counter }}: {{ paso.pasos }}</h3>
+                    <div class="codigo-container">
+                        <pre><code>{{ paso.codigo }}</code></pre>
+                    </div>
+                    {% if paso.fotos %}
+                        <img src="{{ paso.fotos.url }}" alt="{{ paso.pasos }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
+
+{% block javascript %}
+{% endblock javascript %}

@@ -9,6 +9,9 @@ urlpatterns = [
     path('', include("core.urls")),
     path('cursos/', include("cursos.urls")),
     path('proyectos-código/', include("code_project.urls")),
+    path('contacto/', include("contacto.urls")),
+    path('recomendados/', include("recomendaciones.urls")),
+    path('cookies/', include('cookie_consent.urls')),
 ]
 
 if settings.DEBUG:

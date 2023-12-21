@@ -1,0 +1,66 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block description %}
+Cursos realizados por Egoitz Abilleira
+{% endblock description %}
+{% block extrahead %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock extrahead %}
+{% block title %}
+Cursos y Certificaciones
+{% endblock title %}
+
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+<main id="content-main">
+    <div id="content">
+        <h1>Listado de Recomendaciones</h1>
+    </div>
+
+    <div class="grid-container">
+    {% for recomendacion in recomendaciones %}
+        <div class="grid-item">
+            <h2>{{ recomendacion.titulo }}</h2>
+            <p>{{ recomendacion.descripcion }}</p>
+            <p>Autor: {{ recomendacion.autor }}</p>
+            {% if recomendacion.imagen %}
+                <div class="recomendacion-image-container">
+                    <img class="recomendacion-image" src="{{ recomendacion.imagen.url }}" alt="{{ recomendacion.titulo }}" onclick="openModal('myModal{{ forloop.counter }}', '{{ recomendacion.imagen.url }}', '{{ recomendacion.titulo }}')">
+                </div>
+            {% endif %}
+
+            {% if recomendacion.link %}
+                <div class="amazon-link">
+                    <a href="{{ recomendacion.link }}" target="_blank">Ver en Amazon</a>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+    {% if recomendaciones.has_other_pages %}
+        <div class="pagination">
+            {% if recomendaciones.has_previous %}
+                <a href="?page=1">&laquo; Primera</a>
+                <a href="?page={{ recomendaciones.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            {% for num in recomendaciones.paginator.page_range %}
+                {% if num == recomendaciones.number %}
+                    <span class="current-page">{{ num }}</span>
+                {% elif num > recomendaciones.number|add:'-3' and num < recomendaciones.number|add:'3' %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if recomendaciones.has_next %}
+                <a href="?page={{ recomendaciones.next_page_number }}">Siguiente</a>
+                <a href="?page={{ recomendaciones.paginator.num_pages }}">Última &raquo;</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</main>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load cookie_consent_tags %}
+
+{% block description %}
+Página de contacto de Egoitz Abilleira
+{% endblock description %}
+{% block title %}
+Página de contacto
+{% endblock title %}
+{% block extrahead %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock extrahead %}
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+<main id="contacto-main">
+<form id="contacto-form" method="post">
+<h1>Contacto</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="contacto-boton" type="submit">Enviar</button>
+</form>
+<div id="links-redes">
+    <a href="https://www.linkedin.com/in/egoitz-abilleira-uranga-0b1b3a1b0/" target="_blank" class="social-link">
+        <i class="fab fa-linkedin fa-3x"></i> Linkedin
+    </a>
+    <a href="https://www.github.com/egoitzab" target="_blank" class="social-link">
+        <i class="fab fa-github fa-3x"></i> Github
+    </a>
+</div>
+
+</main>
+{% endblock content %}

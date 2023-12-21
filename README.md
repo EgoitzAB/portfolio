@@ -33,7 +33,7 @@ Proporciona ejemplos y guías sobre cómo utilizar el proyecto.
 
 ## Características
 
-Destaca las características principales del proyecto.
+
 
 ## Contribución
 

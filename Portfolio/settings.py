@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = list(os.getenv('ALLOWED_HOSTS'))
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,10 +42,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core.apps.CoreConfig',
-    'cursos.apps.CursosConfig',
-    'code_project.apps.CodeProjectConfig',
+    'core',
+    'cursos',
+    'code_project',
+    'contacto',
+    'recomendaciones',
+
+    'django_recaptcha',
+    'cookie_consent',
+
 ]
+
+RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))
+RECAPTCHA_PRIVATE_KEY = str(os.getenv('RECAPTCHA_PRIVATE_KEY'))
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Portfolio.urls'
@@ -83,8 +94,12 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'djangoportfolio',
+        'USER': 'ego',
+        'PASSWORD': 'clave_secreta',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

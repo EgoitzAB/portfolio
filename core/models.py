@@ -18,6 +18,11 @@ class Secciones(models.Model):
     imagen = models.ImageField(upload_to='secciones', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
+    categoria_choices = [
+        ('main', 'Main'),
+        ('personal', 'Personal')
+    ]
+    categoria = models.CharField(max_length=10, choices=categoria_choices, default='main')
 
     def __str__(self):
         return self.seccion

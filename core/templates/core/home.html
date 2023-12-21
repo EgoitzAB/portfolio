@@ -1,5 +1,5 @@
 {% extends 'pages/base.html' %}
-
+{% load cookie_consent_tags %}
 {% block description %}
 Página principal del portfolio de Egoitz Abilleira
 {% endblock description %}
@@ -8,10 +8,19 @@ Egoitz Abilleira
 {% endblock title %}
 {% block navbar %}
 {% include 'pages/navbar.html' %}
+{% load static %}
 {% endblock navbar %}
 {% block content %}
+
+
+<div class="image-container">
+    <img src="{{ presentacion.imagen.url }}" alt="Logo de Egoitz Abilleira" class="logo-image">
+</div>
 <main id="main-content">
-<h1 class="opening-title">Bienvenido a la página de inicio</h1>
+
+<div class="opening-title-container">
+    <h1 class="opening-title">Your Title</h1>
+</div>
 {% for seccion in secciones %}
     <section class="opening-section">
         <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
@@ -21,6 +30,21 @@ Egoitz Abilleira
 {% endfor %}
 </main>
 {% endblock content %}
-{% block javascript %}
-{% endblock javascript %}
+{% block footer %}
 
+
+{% endblock footer %}
+
+{% block javascript %}
+<script type="module">
+    import {showCookieBar} from '{{ cookiebar_src }}';
+    showCookieBar({
+        statusUrl: '{{ status_url|escapejs }}',
+        templateSelector: '#cookie-consent__cookie-bar',
+        cookieGroupsSelector: '#cookie-consent__cookie-groups',
+        onShow: () => document.querySelector('body').classList.add('with-cookie-bar'),
+        onAccept: () => document.querySelector('body').classList.remove('with-cookie-bar'),
+        onDecline: () => document.querySelector('body').classList.remove('with-cookie-bar'),
+    });
+</script>
+{% endblock javascript %}

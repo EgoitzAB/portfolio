@@ -8,10 +8,10 @@
   </a>
   <ul>
     <li><a class="active" href="{% url 'home' %}">Inicio</a></li>
-    <li><a href="#">Sobre mí</a></li>
+    <li><a href="{% url 'personal' %}">Sobre mí</a></li>
     <li><a href="{% url 'lista_cursos' %}">Cursos y Certificaciones</a></li>
-    <li><a href="#">Proyectos y Código</a></li>
-    <li><a href="#">Contacto</a></li>
-    <li><a href="#">Libros</a></li>
+    <li><a href="{% url 'code_project:lista_proyectos' %}">Proyectos y Código</a></li>
+    <li><a href="{% url 'contacto:contacto' %}">Contacto</a></li>
+    <li><a href="{% url 'recomendados' %}">Libros</a></li>
   </ul>
 </nav>

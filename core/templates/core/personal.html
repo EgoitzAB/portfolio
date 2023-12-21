@@ -1,0 +1,26 @@
+{% extends 'pages/base.html' %}
+
+{% block description %}
+Información personal de Egoitz Abilleira
+{% endblock description %}
+{% block title %}
+Sobre mí
+{% endblock title %}
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+<main id="main-content">
+<h1 class="opening-title">Algo más sobre mí</h1>
+{% for seccion in secciones %}
+<img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+    <section class="opening-section">
+        <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
+        <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
+        <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+    </section>
+{% endfor %}
+</main>
+{% endblock content %}
+{% block javascript %}
+{% endblock javascript %}

@@ -1,0 +1,34 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block description %}
+Proyecto y códigos de Egoitz Abilleira
+{% endblock description %}
+{% block title %}
+Proyectos y Código
+{% endblock title %}
+{% block navbar %}
+{% include 'pages/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+<main id="proyectos-main">
+    <h1 class="opening-title">PROYECTOS Y CÓDIGO</h1>
+
+<div class="grid-container">
+        {% for proyecto in proyectos %}
+            <div class="grid-item">
+                <h2><a href="{% url 'code_project:proyecto_detail' proyecto.id %}">{{ proyecto.nombre }}</a></h2>
+                <p>Descripción: {{ proyecto.descripcion }}</p>
+                <p>Estatus: {{ proyecto.status }}</p>
+                <p>Tipo de contenido: {{ proyecto.tipo_contenido }}</p>
+                <p>URL: <a href="{{ proyecto.url }}">{{ proyecto.url }}</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% include 'pages/pagination.html' %}
+
+{% endblock content %}
+
+{% block javascript %}
+{% endblock javascript %}
