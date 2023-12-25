@@ -28,12 +28,3 @@ function openModal(modalId, imageUrl, title) {
   modalImage.src = imageUrl;
   modalTitle.innerHTML = title;
 }
-
-legacyShowCookieBar({
-  content: '<div class="cookie-bar"> <p>We use cookies to improve your browsing experience. By continuing to use our site, you agree to our use of cookies.</p> <a href="/accept_cookies" class="cc-cookie-accept">Accept</a> <a href="/decline_cookies" class="cc-cookie-decline">Decline</a> </div>',
-  cookie_groups: ['analytics'],
-  cookie_decline: '{% get_decline_cookie_groups_cookie_string request analytics %}',
-  beforeDeclined: function () {
-    console.log('User is about to decline cookies');
-  },
-});

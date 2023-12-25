@@ -1,5 +1,5 @@
 {% extends 'pages/base.html' %}
-{% load cookie_consent_tags %}
+
 {% block description %}
 Página principal del portfolio de Egoitz Abilleira
 {% endblock description %}
@@ -36,15 +36,5 @@ Egoitz Abilleira
 {% endblock footer %}
 
 {% block javascript %}
-<script type="module">
-    import {showCookieBar} from '{{ cookiebar_src }}';
-    showCookieBar({
-        statusUrl: '{{ status_url|escapejs }}',
-        templateSelector: '#cookie-consent__cookie-bar',
-        cookieGroupsSelector: '#cookie-consent__cookie-groups',
-        onShow: () => document.querySelector('body').classList.add('with-cookie-bar'),
-        onAccept: () => document.querySelector('body').classList.remove('with-cookie-bar'),
-        onDecline: () => document.querySelector('body').classList.remove('with-cookie-bar'),
-    });
-</script>
+
 {% endblock javascript %}

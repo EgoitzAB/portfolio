@@ -2,12 +2,27 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ContactForm
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.views import View
+from .forms import ContactForm
+from cookie_consent.util import get_cookie_value_from_request
 
 
-def contacto(request):
-    if request.method == 'POST':
+class ContactoView(View):
+    def get(self, request):
+        form = ContactForm()
+        return render(request, 'contacto/contacto.html', {'form': form})
+
+    def post(self, request):
         form = ContactForm(request.POST)
         if form.is_valid():
+            # Validar aceptación de cookies de reCAPTCHA
+            cc = get_cookie_value_from_request(request, "cookie-consent")
+            if not cc:
+                messages.error(request, "Debes aceptar las cookies de reCAPTCHA")
+                return redirect('contacto')
             email = EmailMessage(
                 'Nuevo mensaje de contacto',
                 'De: {0} {1}\nEmail: {2}\nTeléfono: {3}\n\n{4}'.format(
@@ -24,10 +39,8 @@ def contacto(request):
         else:
             for key, error in list(form.errors.items()):
                 if key == 'captcha' and error[0] == 'This field is required.':
-                    messages.error(request, "You must pass the reCAPTCHA test")
+                    messages.error(request, "Debes pasar la prueba reCAPTCHA")
                     continue
                 messages.error(request, error)
-    else:
-        form = ContactForm()
 
-    return render(request, 'contacto/contacto.html', {'form': form})
+        return render(request, 'contacto/contacto.html', {'form': form})

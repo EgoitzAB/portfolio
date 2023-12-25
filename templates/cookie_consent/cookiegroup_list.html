@@ -11,4 +11,12 @@
     {% include "cookie_consent/_cookie_group.html" %}
   {% endfor %}
 
+  <button onclick="goBack()">Volver</button>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
 {% endblock %}
