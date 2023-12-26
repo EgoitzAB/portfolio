@@ -7,11 +7,6 @@ Mi Portfolio
 - [Instalación](#instalación)
 - [Uso](#uso)
 - [Características](#características)
-    - Uso de CSS desde cero, incluyendo Grid.
-    - Implementación de Django con diferentes class views.
-    - Continuo desarrollo y mejora del proyecto.
-    - Añadir la actualización del código desde Github, sin usar requests\
-        a su api para la optimización de la carga.
 - [Contribución](#contribución)
 - [Licencia](#licencia)
 
@@ -25,24 +20,34 @@ Este proyecto se distribuye bajo la Licencia Pública General de GNU (GNU GPL). 
 
 ## Instalación
 
-Explica cómo instalar y configurar el proyecto.
+Está en proceso, en un par de semanas o algo más lo pongo.
 
 ## Uso
 
-Proporciona ejemplos y guías sobre cómo utilizar el proyecto.
+Paso uno, entrar en mi página. Paso dos, ver que estoy preparado para un puesto de Junior. Paso tres, contratarme :D
 
 ## Características
+- Todo el CSS ha sido construído desde cero. Hasta ahora usaba frameworks cómo Bootstrap 5 o W3.css. Es lo que más me ha costado.
+- Realizado con Django y la inestimable ayuda de GithubCopilot.
+- Tengo pensado distribuirlo con Docker, aunque realmente lo montaré en mi VPS con Apache2 y SSH seguramente, clonando o copiando desde local.
+- He usado Django-cookie-consent para las cookies, pero espero tener tiempo de desarrollar algo propio para el futuro. Una vez empezado se acaba, aunque la integración me ha costado al principio.
+- Los modales y demás los he realizado con Javascript, aunque acabo de empezar a estudiar éste lenguaje y aún me cuesta un poco.
+- He añadido un recaptcha y la página de afiliación de Amazon cómo ejercicio, y por si cae algo de plata. Seguramente añadiré Google Ads en algún template por los mismos motivos.
+- Ire haciendo CI/CD con Git y Github, pero por ahora solo voy con el CI.
+- He usado PostgreSQL como base de datos, ya que Mysql me ha dado problemas en alguna ocasión.
+- La documentación se genera con Sphinx, aunque con la ayuda de Copilot la haré en el último momento.
+
 
 
 
 ## Contribución
 
-Indica cómo otros desarrolladores pueden contribuir al proyecto.
-
-## Licencia
-
-Menciona la licencia bajo la cual se distribuye el proyecto.
+Se acepta cualquier sugerencia y pull, aun siendo una página personal.
 
 ## Contacto
 
 Proporciona información de contacto para consultas o colaboraciones.
+
+## Licencia
+
+Se distribuye bajo la licencia GNU GPL en principio, aunque las partes como Django-cookie-consent me producen mis dudas, al deber ser citado y teniendo en mente que puede tratarse de software privativo. Se les citará y veré hasta que punto pueden usarse estas licencias.
