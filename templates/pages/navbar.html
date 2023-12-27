@@ -1,17 +1,18 @@
-<nav>
-  <input type="checkbox" id="check">
-  <label for="check" class="checkbtn">
-    <i class="fas fa-bars"></i>
+<nav id="navbar">
+  <input type="radio" id="openMenu" name="menu">
+  <label for="openMenu" class="checkbtn">
+    <i class="fas fa-bars" id="menuIcon"></i> Menú
   </label>
-  <a href="#" class="enlace">
-    <img src="logo.png" alt="" class="logo">
-  </a>
-  <ul>
+  <ul id="menu">
     <li><a class="active" href="{% url 'home' %}">Inicio</a></li>
     <li><a href="{% url 'personal' %}">Sobre mí</a></li>
     <li><a href="{% url 'lista_cursos' %}">Cursos y Certificaciones</a></li>
     <li><a href="{% url 'code_project:lista_proyectos' %}">Proyectos y Código</a></li>
     <li><a href="{% url 'contacto:contacto' %}">Contacto</a></li>
     <li><a href="{% url 'recomendados' %}">Libros</a></li>
+    <li>
+      <input type="radio" id="closeMenu" name="menu">
+      <label for="closeMenu" id="closeIcon">X</label>
+    </li>
   </ul>
 </nav>

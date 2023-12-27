@@ -44,7 +44,6 @@ class HomeView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='main')
-        context['presentacion'] = Secciones.objects.get(seccion='presentacion')
         return context
 
 class PersonalView(TemplateView):

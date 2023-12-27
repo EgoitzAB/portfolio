@@ -1,4 +1,5 @@
 {% extends 'pages/base.html' %}
+{% load static %}
 
 {% block description %}
 Página principal del portfolio de Egoitz Abilleira
@@ -8,24 +9,24 @@ Egoitz Abilleira
 {% endblock title %}
 {% block navbar %}
 {% include 'pages/navbar.html' %}
-{% load static %}
 {% endblock navbar %}
 {% block content %}
 
-
-<div class="image-container">
-    <img src="{{ presentacion.imagen.url }}" alt="Logo de Egoitz Abilleira" class="logo-image">
+<div class="header-video">
+  <video autoplay loop muted>
+    <source src="media/videos/keyboard_-_1046 (Original).mp4" type="video/mp4">
+    Tu browser no soporta el tag de video
+  </video>
+  <h1>Egoitz Abilleira <br/> Desarrollo Web</h1>
 </div>
 <main id="main-content">
-
-<div class="opening-title-container">
-    <h1 class="opening-title">Your Title</h1>
-</div>
 {% for seccion in secciones %}
     <section class="opening-section">
+    <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+    <div class="opening-section-text-container">
         <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
         <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
-        <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+    </div>
     </section>
 {% endfor %}
 </main>

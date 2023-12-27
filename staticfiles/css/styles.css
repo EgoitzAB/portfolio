@@ -21,33 +21,98 @@
 	--breakpoint-xl: 1200px;
 }
 
+/* block of css for the navbar-menu */
+
 .checkbtn {
 	font-size: 30px;
-	color: #fff;
-	float: right;
+	color: var(--success-color);
+	position: fixed;
+	top: 2%;
+	right: 2%;
 	line-height: 80px;
-	margin-right: 40px;
+	margin-right: 2%;
 	cursor: pointer;
-	display: none;
+	display: block;
+	border: 20% solid var(--dark-color);
+	border-radius: 5px;
+	padding: 10px 20px;
+	background-color: var(--primary-color);
+	transition: background-color 0.3s ease;
 }
 
-#check {
-	display: none;
+.checkbtn:hover {
+	background-color: var(--secondary-color);
 }
 
-.close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+nav ul li {
+	display: block;
+	margin: 50px;
+	line-height: 30px;
+	margin-top: 10vh;
+	}
+
+li a:hover,	li a:active {
+	background: none;
+	color: red;
+	}
+
+nav ul li a {
+		color: #fff;
+		font-size: 4vw;
+		padding: 7px 13px;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+
+li a.active, li a:hover {
+		background: #4f4f5a;
+		transition: 0.5s;
+	}
+
+ul {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: #04110f;
+		top: 0px;
+		left: -100%;
+		text-align: center;
+		transition: all 0.5s;
+		opacity: 0.9;
+		}
+
+#closeIcon {
+			position: absolute;
+			top: 5%;
+			right: 5%;
+			font-size: 3em;
+			cursor: pointer;
+			display: none;
+			color: white;
+			width: 5em;
+			height: 5em;
 }
 
-.close:hover,
-.close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
+/* Lógica para ocultar y mostrar el icono de cierre del menú */
+#openMenu, #closeMenu {
+	display: none; /* Oculta los botones de radio */
 }
+
+#openMenu:checked ~ #menu {
+	left: 0; /* Muestra el menú cuando #openMenu está seleccionado */
+}
+
+#closeMenu:checked ~ #closeIcon {
+	display: none; /* Oculta la "X" cuando #closeMenu está seleccionado */
+}
+
+#openMenu:checked ~ #menu #closeIcon {
+	display: block; /* Muestra la "X" cuando #openMenu está seleccionado */
+	color: white;
+}
+
+/* termina el bloque de css para el navbar */
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -177,36 +242,8 @@ code {
 	margin-right: auto;
 }
 
-nav ul {
-	float: right;
-	margin-right: 20px;
-}
 
-nav ul li {
-	display: inline-block;
-	line-height: 80px;
-	margin: 0 5px;
-}
 
-nav ul li a {
-	color: #fff;
-	font-size: 18px;
-	padding: 7px 13px;
-	border-radius: 3px;
-	text-transform: uppercase;
-}
-
-nav {
-	background: linear-gradient(var(--success-color, #0f0d99), var(--info-color, #00aaff));
-	height: 80px;
-	width: 100%;
-	position: sticky;
-	top: 0;
-}
-li a.active, li a:hover {
-	background: #4f4f5a;
-	transition: 0.5s;
-}
 body .opening-title-container {
     background-color: var(--primary-color);
 }
@@ -315,62 +352,16 @@ pre {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 }
+
+
+
 @media (max-width: 1024px) {
-	.checkbtn {
-	display: block;
-	}
-
-	ul {
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	background: #04110f;
-	top: 80px;
-	left: -100%;
-	text-align: center;
-	transition: all 0.5s;
-	opacity: 0.9;
-	}
-
-	.enlace {
-		padding-left: 20px;
-	}
-
-	nav ul li a {
-		font-size: 16px;
-	}
-
-	#main-content {
-        padding: 0 10px; /* Padding más pequeño para pantallas pequeñas */
-    }
 
 	.opening-title {
 		font-size: 2rem;
 		margin-top: calc(15% + 80px);
 	}
 
-	nav {
-		position: fixed;
-		}
-
-	nav ul li {
-	display: block;
-	margin: 50px;
-	line-height: 30px;
-	}
-
-	nav ul li a {
-	font-size: 20px;
-	}
-
-	li a:hover,	li a:active {
-	background: none;
-	color: red;
-	}
-
-	#check:checked ~ ul {
-	left: 0;
-	}
 }
 
 @media screen and (max-width: 700px) {
@@ -457,30 +448,40 @@ pre {
     max-height: 100%;
 }
 
-#navbar, .image-container {
-	display: block;
-}
-
 body.with-cookie-bar {
 
 	padding-top: 35px;
-	
 	}
-	
-	.cookie-bar {
-	
+
+.cookie-bar {
 	position: fixed;
-	
 	width: 100%;
-	
 	top:0;
-	
 	text-align:center;
-	
 	height:25px;
-	
 	line-height: 25px;
-	
 	background: #eee;
-	
 	}
+
+
+
+.header-video {
+		position: relative;
+		width: 100%;
+		height: 50vh; /* Ajusta esto según tus necesidades */
+		overflow: hidden;
+}
+
+.header-video video {
+		width: 100%;
+		height: auto;
+}
+
+.header-video h1 {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: rgb(160, 37, 37);
+		font-size: 2em;
+}

@@ -1,6 +1,6 @@
 # Nombre del Proyecto
 
-Mi Portfolio
+Mi Portfolio, hecho con django y con javascript y css desde cero.
 
 ## Tabla de contenidos
 
@@ -31,14 +31,11 @@ Paso uno, entrar en mi página. Paso dos, ver que estoy preparado para un puesto
 - Realizado con Django y la inestimable ayuda de GithubCopilot.
 - Tengo pensado distribuirlo con Docker, aunque realmente lo montaré en mi VPS con Apache2 y SSH seguramente, clonando o copiando desde local.
 - He usado Django-cookie-consent para las cookies, pero espero tener tiempo de desarrollar algo propio para el futuro. Una vez empezado se acaba, aunque la integración me ha costado al principio.
-- Los modales y demás los he realizado con Javascript, aunque acabo de empezar a estudiar éste lenguaje y aún me cuesta un poco.
+- Los modales y demás elementos móviles los he realizado con Javascript y CSS, aunque acabo de empezar a estudiar éste lenguaje y aún me cuesta un poco.
 - He añadido un recaptcha y la página de afiliación de Amazon cómo ejercicio, y por si cae algo de plata. Seguramente añadiré Google Ads en algún template por los mismos motivos.
 - Ire haciendo CI/CD con Git y Github, pero por ahora solo voy con el CI.
 - He usado PostgreSQL como base de datos, ya que Mysql me ha dado problemas en alguna ocasión.
 - La documentación se genera con Sphinx, aunque con la ayuda de Copilot la haré en el último momento.
-
-
-
 
 ## Contribución
 

@@ -21,33 +21,180 @@
 	--breakpoint-xl: 1200px;
 }
 
+/* block of css for the navbar-menu */
+
 .checkbtn {
 	font-size: 30px;
-	color: #fff;
-	float: right;
+	color: var(--success-color);
+	position: fixed;
+	top: 2%;
+	right: 2%;
 	line-height: 80px;
-	margin-right: 40px;
+	margin-right: 2%;
 	cursor: pointer;
-	display: none;
+	display: block;
+	border: 20% solid var(--dark-color);
+	border-radius: 5px;
+	padding: 10px 20px;
+	background-color: var(--primary-color);
+	transition: background-color 0.3s ease;
 }
 
-#check {
-	display: none;
+.checkbtn:hover {
+	background-color: var(--secondary-color);
 }
 
-.close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+nav ul li {
+	display: block;
+	margin: 50px;
+	line-height: 30px;
+	margin-top: 10vh;
+	}
+
+li a:hover,	li a:active {
+	background: none;
+	color: red;
+	}
+
+nav ul li a {
+		color: #fff;
+		font-size: 4vw;
+		padding: 7px 13px;
+		border-radius: 3px;
+		text-transform: uppercase;
+	}
+
+
+li a.active, li a:hover {
+		background: #4f4f5a;
+		transition: 0.5s;
+	}
+
+ul {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: #04110f;
+		top: 0px;
+		left: -100%;
+		text-align: center;
+		transition: all 0.5s;
+		opacity: 0.9;
+		}
+
+#closeIcon {
+			position: absolute;
+			top: 5%;
+			right: 5%;
+			font-size: 3em;
+			cursor: pointer;
+			display: none;
+			color: white;
+			width: 5em;
+			height: 5em;
 }
 
-.close:hover,
-.close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
+#navbar {
+	z-index: 100; /* Coloca el menú por encima de todo, (es por el video de cabecera) */
+	position: relative;
 }
+
+/* Lógica para ocultar y mostrar el icono de cierre del menú */
+#openMenu, #closeMenu {
+	display: none; /* Oculta los botones de radio */
+}
+
+#openMenu:checked ~ #menu {
+	left: 0; /* Muestra el menú cuando #openMenu está seleccionado */
+}
+
+#closeMenu:checked ~ #closeIcon {
+	display: none; /* Oculta la "X" cuando #closeMenu está seleccionado */
+}
+
+#openMenu:checked ~ #menu #closeIcon {
+	display: block; /* Muestra la "X" cuando #openMenu está seleccionado */
+	color: white;
+}
+
+/* termina el bloque de css para el navbar */
+
+
+/* Estilos para la página principal */
+
+.header-video {
+	position: relative;
+	width: 100%;
+	height: 75vh;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.header-video video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+}
+
+.header-video h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: rgb(247, 219, 212);
+	font-size: 10vh;
+}
+
+#main-content {
+    margin: 0;
+    padding: 0;
+}
+
+body .opening-section {
+	display: flex;
+	align-items: center;
+	border: 10px solid #ccc;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	padding: 2%;
+	width: 90%;
+	height: 20%;
+	margin: 5% auto;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 1s ease;
+	animation: slideIn 1s forwards; /* Añade una animación */
+	view-timeline-name: --image-scroll; /* create the element (--image-scroll) */
+	view-timeline-axis: block;
+	animation-timeline: --image-scroll;
+	animation-name: slideIn;
+  }
+  
+@keyframes slideIn {
+	10% {
+	  opacity: 0.2;
+	  transform: translateY(20px);
+	}
+	50% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+
+
+.home-image {
+	width: 25%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.opening-section-text-container {
+	width: 75%;
+	padding: 20px;
+}
+/* termina el bloque de css para el video de la página principal */
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -135,11 +282,6 @@ code {
 	height: 40px;
 }
 
-#main-content {
-    margin: 0 auto;
-    padding: 0 5vw;
-}
-
 .modal {
 	display: none;
 	position: fixed; /* Stay in place */
@@ -177,36 +319,8 @@ code {
 	margin-right: auto;
 }
 
-nav ul {
-	float: right;
-	margin-right: 20px;
-}
 
-nav ul li {
-	display: inline-block;
-	line-height: 80px;
-	margin: 0 5px;
-}
 
-nav ul li a {
-	color: #fff;
-	font-size: 18px;
-	padding: 7px 13px;
-	border-radius: 3px;
-	text-transform: uppercase;
-}
-
-nav {
-	background: linear-gradient(var(--success-color, #0f0d99), var(--info-color, #00aaff));
-	height: 80px;
-	width: 100%;
-	position: sticky;
-	top: 0;
-}
-li a.active, li a:hover {
-	background: #4f4f5a;
-	transition: 0.5s;
-}
 body .opening-title-container {
     background-color: var(--primary-color);
 }
@@ -315,62 +429,16 @@ pre {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 }
+
+
+
 @media (max-width: 1024px) {
-	.checkbtn {
-	display: block;
-	}
-
-	ul {
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	background: #04110f;
-	top: 80px;
-	left: -100%;
-	text-align: center;
-	transition: all 0.5s;
-	opacity: 0.9;
-	}
-
-	.enlace {
-		padding-left: 20px;
-	}
-
-	nav ul li a {
-		font-size: 16px;
-	}
-
-	#main-content {
-        padding: 0 10px; /* Padding más pequeño para pantallas pequeñas */
-    }
 
 	.opening-title {
 		font-size: 2rem;
 		margin-top: calc(15% + 80px);
 	}
 
-	nav {
-		position: fixed;
-		}
-
-	nav ul li {
-	display: block;
-	margin: 50px;
-	line-height: 30px;
-	}
-
-	nav ul li a {
-	font-size: 20px;
-	}
-
-	li a:hover,	li a:active {
-	background: none;
-	color: red;
-	}
-
-	#check:checked ~ ul {
-	left: 0;
-	}
 }
 
 @media screen and (max-width: 700px) {
@@ -457,10 +525,6 @@ pre {
     max-height: 100%;
 }
 
-#navbar, .image-container {
-	display: block;
-}
-
 body.with-cookie-bar {
 
 	padding-top: 35px;
@@ -475,3 +539,6 @@ body.with-cookie-bar {
 	line-height: 25px;
 	background: #eee;
 	}
+
+
+
