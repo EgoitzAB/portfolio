@@ -152,36 +152,74 @@ ul {
     margin: 0;
     padding: 0;
 }
-
 body .opening-section {
-	display: flex;
-	align-items: center;
-	border: 10px solid #ccc;
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-	padding: 2%;
-	width: 90%;
-	height: 20%;
-	margin: 5% auto;
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all 1s ease;
-	animation: slideIn 1s forwards; /* Añade una animación */
-	view-timeline-name: --image-scroll; /* create the element (--image-scroll) */
-	view-timeline-axis: block;
-	animation-timeline: --image-scroll;
-	animation-name: slideIn;
-  }
-  
+    display: flex;
+    align-items: center;
+    border: 10px solid #ccc;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 2%;
+    width: 90%;
+    height: 20%;
+    margin: 5% auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+	animation: slideIn auto linear forwards;
+    animation-duration: 1ms;
+    view-timeline-axis: block;
+    animation-timeline: view();
+}
+
 @keyframes slideIn {
-	10% {
-	  opacity: 0.2;
-	  transform: translateY(20px);
-	}
-	50% {
-	  opacity: 1;
-	  transform: translateY(0);
-	}
-  }
+    0% {
+      opacity: 1;
+      transform: translateY(20px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+@supports not (animation-timeline: --image-scroll) {
+    body .opening-section {
+        transition: transform 1s, opacity 1s;
+        animation-name: fallbackSlideIn;
+        animation-duration: 1s forwards;
+    }
+
+    @keyframes fallbackSlideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #eea546;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-links {
+    width: 50%;
+}
+
+.footer-form {
+    width: 50%;
+}
+
+/* fin de estilos para la página principal */
 
 
 .home-image {

@@ -24,11 +24,10 @@
 
         {% endblock content %}
         {% block footer %}
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+
         {% endblock footer %}
-        <p>
-        <a href="{{ url_cookies }}">Cookies policy</a>
-        </p>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+        {% include 'pages/footer.html' %}
         {% if request|cookie_consent_enabled %}
         {% not_accepted_or_declined_cookie_groups request as cookie_groups %}
 

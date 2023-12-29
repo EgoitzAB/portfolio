@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Secciones
 from cookie_consent.util import get_cookie_value_from_request
+from contacto.forms import ContactForm
 import uuid
 
 
@@ -44,6 +45,7 @@ class HomeView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='main')
+        context['form'] = ContactForm()
         return context
 
 class PersonalView(TemplateView):
@@ -75,4 +77,5 @@ class PersonalView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='personal')
+        context['form'] = ContactForm()
         return context

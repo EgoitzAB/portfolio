@@ -1,0 +1,29 @@
+<footer>
+    <div class="footer-links">
+        <p>
+            <a href="{{ url_cookies }}">Cookies policy</a>
+        </p>
+        <p>
+            <a href="{{ url_privacy }}">Política de privacidad</a>
+        </p>
+        <p>
+            <a href="{{ url_terms }}">Terminos de uso</a>
+        </p>
+        <p>
+            <a href="{{ url_contact }}">Contacto</a>
+        </p>
+        <p>
+            <a href="{{ url_about }}">Sobre mí</a>
+        </p>
+        <p>
+            <a href="{{ url_sitemap }}">Sitemap</a>
+        </p>
+    </div>
+    <div class="footer-form">
+        <form action="{{ url_contact }}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</footer>
