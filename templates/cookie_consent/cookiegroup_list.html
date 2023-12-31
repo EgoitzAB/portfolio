@@ -12,12 +12,28 @@
     {% include "cookie_consent/_cookie_group.html" %}
   {% endfor %}
 
-  <button onclick="goBack()">Volver</button>
+  <button id="back-button">Volver</button>
 
-  <script>
-    function goBack() {
-      window.history.back();
+<script>
+  // Cuando la página se carga, almacena la URL de la página actual en una cookie
+  // a menos que la página actual sea la página de cookies
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!window.location.href.includes('cookies')) { // Reemplaza 'cookies' con la ruta de tu página de cookies
+      document.cookie = "previousPage=" + window.location.href + ";path=/";
     }
-  </script>
+  });
 
+  // Cuando el usuario hace clic en el botón "Volver", redirige a la URL almacenada
+  document.querySelector('#back-button').addEventListener('click', function(event) {
+    event.preventDefault();
+    var cookie = document.cookie.split('; ').find(row => row.startsWith('previousPage='));
+    var previousPage = cookie ? cookie.split('=')[1] : null;
+    if (previousPage) {
+      window.location.href = previousPage;
+    } else {
+      // Redirige al usuario a una página predeterminada si no hay ninguna URL almacenada
+      window.location.href = '/'; // Reemplaza '/' con la URL de tu página predeterminada
+    }
+  });
+</script>
 {% endblock %}

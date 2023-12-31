@@ -9,11 +9,9 @@ This module defines the URL patterns for the cursos app. It includes the followi
 - `/cursos/`: This pattern maps to the `CursosListView` view and is named `lista_cursos`.
 
 """
-aap_name = 'cursos'
+app_name = 'cursos'
 
 urlpatterns = [
     path('', CursosListView.as_view(), name='lista_cursos'),
+    path('tag/<slug:tag_slug>/', CursosListView.as_view(), name='tag'),
 ]
-
-
-

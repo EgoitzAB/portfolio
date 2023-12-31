@@ -202,6 +202,7 @@ body .opening-section {
 
 footer {
     display: flex;
+	flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     background-color: #eea546;
@@ -212,13 +213,62 @@ footer {
 }
 
 .footer-links {
-    width: 50%;
+    order: 2;
+	flex-direction: column;
+	align-items: start;
 }
 
-.footer-form {
-    width: 50%;
+.footer-links a {
+    color: #000;
+    margin-bottom: 2%;
+    display: block;
+    font-size: 1.2rem;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 1%;
+	max-width: 60%;
+	box-sizing: border-box;
+	background-color: #a2fcff;
 }
 
+footer .footer-form input,
+footer .footer-form textarea,
+footer .footer-form button {
+    padding: 0.3125rem;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    width: 100%;
+	border-radius: 10px;
+}
+
+footer .footer-form {
+    order: 1;
+    display: grid;
+    grid-template-columns: auto 9.375rem;
+    gap: 0.3125rem;
+}
+
+footer .footer-form label {
+    margin-bottom: 0.125rem;
+}
+
+@media (min-width: 768px) {
+    footer {
+        flex-direction: row;
+    }
+
+    .footer-links {
+        width: 50%;
+        order: 1;
+		flex-direction: row;
+		flex-wrap: wrap;
+    }
+
+    footer .footer-form {
+        order: 2;
+        width: 50%;
+    }
+}
 /* fin de estilos para la página principal */
 
 
@@ -233,6 +283,51 @@ footer {
 	padding: 20px;
 }
 /* termina el bloque de css para el video de la página principal */
+
+
+/* Estilos para la página de proyectos */
+
+
+body .modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	display: none;
+	background-color: #2386f0;
+	opacity: 1;
+	border: 8px solid #000;
+}
+
+.modal-content img {
+	max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+	max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
+	object-fit: contain; /* Asegura que la imagen mantenga su aspecto original */
+}
+
+@media screen and (max-width: 1000px) {
+	* {
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+    .modal {
+        display: none; /* Oculta el modal en pantallas de menos de 600px de ancho */
+    }
+
+	.modal-content img {
+		display: none;
+	}
+
+	.modal h2 {
+		display: none;
+	}
+
+	.modal-content .close {
+		display: none;
+	}
+}
+
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -289,9 +384,9 @@ code {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
 	gap: 30px;
-	margin: 10vh 20vh 15vh 15vh;
+	margin: 5% 5% 5% 5%;
 }
 
 .grid-item {
@@ -319,45 +414,6 @@ code {
 .logo {
 	height: 40px;
 }
-
-.modal {
-	display: none;
-	position: fixed; /* Stay in place */
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: hidden; /* Disable scroll on small screens */
-	background-color: rgb(0,0,0);
-	background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #fefefe;
-	padding: 20px;
-	border: 1px solid #888;
-	width: auto;
-	max-width: 80vw;
-	height: auto;
-	max-height: 80vh;
-    overflow: auto;
-	box-sizing: border-box;
-}
-
-#modalImage {
-	display: block;
-	max-width: 100%;
-	height: auto;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
 
 body .opening-title-container {
     background-color: var(--primary-color);
@@ -480,10 +536,6 @@ pre {
 }
 
 @media screen and (max-width: 700px) {
-    .modal-content {
-        width: 90%;
-        height: 50%;
-    }
 
     #contacto-main {
         display: flex; /* cambia a flexbox */
@@ -492,15 +544,19 @@ pre {
         flex-direction: column; /* coloca los elementos en una columna */
     }
 
-    #contacto-form {
-        width: 90vw !important;
-        margin: 5vh 5vh 5vh 5vh !important;
-    }
-
     #links-redes {
         grid-row: 2;
 		grid-column: auto;
 		margin: 5vh 5vh 5vh 5vh !important;
+    }
+
+	.grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Ajusta el ancho mínimo a 100% */
+        margin: 5% 5% 5% 5%; /* Cambia las unidades de vh a % */
+    }
+
+    .grid-item {
+        max-height: none; /* Elimina la restricción de altura máxima */
     }
 }
 

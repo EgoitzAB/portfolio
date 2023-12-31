@@ -27,9 +27,14 @@ Cursos y Certificaciones
             <h2>{{ curso.nombre }}</h2>
             {% if curso.archivo %}
                 <div class="curso-image-container">
-                    <img class="curso-image" src="{{ curso.archivo.url }}" alt="{{ curso.nombre }}" onclick="openModal('myModal{{ forloop.counter }}', '{{ curso.archivo.url }}', '{{ curso.nombre }}')">
+                    <img class="curso-image" src="{{ curso.archivo.url }}" alt="{{ curso.nombre }}" onclick="openModal('myModal{{ forloop.counter }}', '{{ curso.archivo.url }}', '{{ curso.nombre }}', event)">
                 </div>
             {% endif %}
+
+            {% for tag in curso.tags.all %}
+            <a href="{% url 'cursos:tag' tag.slug %}"><span class="badge badge-primary">{{ tag.name }}</span></a>
+            {% if not forloop.last %},  {% endif %}
+            {% endfor %}
             <!-- Resto del código -->
         </div>
         <div id="myModal{{ forloop.counter }}" class="modal">

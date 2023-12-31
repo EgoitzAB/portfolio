@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'django_recaptcha',
     'cookie_consent',
+    'taggit',
 
 ]
 
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'contacto.context_processors.add_form_to_context',
             ],
         },
     },

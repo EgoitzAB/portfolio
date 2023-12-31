@@ -1,6 +1,6 @@
 from django.db import models
 from django.db import models
-
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Curso(models.Model):
@@ -12,6 +12,7 @@ class Curso(models.Model):
     descripcion = models.TextField()
     horas = models.PositiveIntegerField()
     habilidades = models.ManyToManyField('Habilidad')
+    tags = TaggableManager()
 
     def __str__(self):
         return self.nombre

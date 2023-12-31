@@ -45,7 +45,6 @@ class HomeView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='main')
-        context['form'] = ContactForm()
         return context
 
 class PersonalView(TemplateView):
@@ -77,5 +76,4 @@ class PersonalView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='personal')
-        context['form'] = ContactForm()
         return context
