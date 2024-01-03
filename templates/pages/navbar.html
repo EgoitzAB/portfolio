@@ -4,8 +4,8 @@
     <i class="fas fa-bars" id="menuIcon"></i> Menú
   </label>
   <ul id="menu">
-    <li><a class="active" href="{% url 'home' %}">Inicio</a></li>
-    <li><a href="{% url 'personal' %}">Sobre mí</a></li>
+    <li><a class="active" href="{% url 'core:home' %}">Inicio</a></li>
+    <li><a href="{% url 'core:personal' %}">Sobre mí</a></li>
     <li><a href="{% url 'cursos:lista_cursos' %}">Cursos y Certificaciones</a></li>
     <li><a href="{% url 'code_project:lista_proyectos' %}">Proyectos y Código</a></li>
     <li><a href="{% url 'contacto:contacto' %}">Contacto</a></li>

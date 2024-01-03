@@ -23,10 +23,8 @@ Egoitz Abilleira
 {% for seccion in secciones %}
     <section class="opening-section">
     <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
-    <div class="opening-section-text-container">
         <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
         <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
-    </div>
     </section>
 {% endfor %}
 </main>

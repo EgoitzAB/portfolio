@@ -1,7 +1,6 @@
 import re
 
 from django import forms
-from django_recaptcha.fields import ReCaptchaField
 from django.core.exceptions import ValidationError
 
 def your_phone_validator(value):
@@ -15,4 +14,3 @@ class ContactForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
     telefono = forms.CharField(max_length=20, required=False, validators=[your_phone_validator], widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}))
     mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Mensaje'}))
-    captcha = ReCaptchaField()

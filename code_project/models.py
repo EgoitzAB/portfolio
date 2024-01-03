@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Max
+from django.urls import reverse
 
 
 class Proyecto(models.Model):
@@ -18,6 +19,10 @@ class Proyecto(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     tipo_contenido = models.CharField(max_length=10, choices=TIPO_CONTENIDO, default='proyecto')
     url = models.URLField(max_length=200, blank=True, null=True)
+    fecha_modificado = models.DateTimeField(auto_now=True, blank=True, null=True)
+
+    def get_absolute_url(self):
+        return reverse('code_project:proyecto_detail', args=[str(self.id)])
 
 
 class Codigo(models.Model):
