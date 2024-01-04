@@ -25,7 +25,7 @@ urlpatterns = [
     path('contacto/', include("contacto.urls")),
     path('recomendados/', include("recomendaciones.urls")),
     path('cookies/', include('cookie_consent.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
 if settings.DEBUG:

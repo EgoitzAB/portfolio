@@ -21,11 +21,13 @@ Egoitz Abilleira
 </div>
 <main id="main-content">
 {% for seccion in secciones %}
-    <section class="opening-section">
-    <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
-        <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
-        <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
-    </section>
+  <section class="opening-section flex-home">
+    <h2 class="opening-section-title flex-home">{{ seccion.seccion | upper }}</h2>
+    <div class="opening-section-line flex-home">
+    <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="flex-home home-image">
+    <p class="opening-section-text flex-home">{{ seccion.texto | linebreaksbr }}</p>
+    </div>
+  </section>
 {% endfor %}
 </main>
 {% endblock content %}

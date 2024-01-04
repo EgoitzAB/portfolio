@@ -18,8 +18,7 @@ Proyectos y Código
         {% for proyecto in proyectos %}
             <div class="grid-item proyecto-list">
                 <h2><a href="{% url 'code_project:proyecto_detail' proyecto.id %}">{{ proyecto.nombre }}</a></h2>
-                <p>Descripción: {{ proyecto.descripcion }}</p>
-                <p class="status">Estatus: {{ proyecto.status }}</p>
+                <p class="proyecto-description">Descripción: {{ proyecto.descripcion }}</p>
                 <p class="url">URL: <a href="{{ proyecto.url }}">{{ proyecto.url }}</a></p>
             </div>
         {% endfor %}

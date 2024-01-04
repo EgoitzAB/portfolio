@@ -199,7 +199,7 @@ footer {
 	flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    background-color: var(--contraste-palido);
+    background-color: var(--contraste);
     position: relative;
     left: 0;
     bottom: 0;
@@ -214,7 +214,7 @@ footer {
 }
 
 .footer-links a {
-    color: var(--contraste-palido);
+    color: var(--contraste);
     margin-bottom: 2%;
     display: block;
     font-size: 1.2rem;
@@ -223,7 +223,7 @@ footer {
     padding: 1%;
 	max-width: 80%;
 	box-sizing: border-box;
-	background-color: var(--contraste);
+	background-color: var(--contraste-palido);
 }
 
 footer .footer-form {
@@ -253,9 +253,9 @@ body .opening-title-container {
 }
 
 .opening-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-family: 'Courier New', Courier, monospace;
-    color: rgb(224, 40, 64);
+    color: rgb(241, 113, 152);
     text-align: center;
     margin-top: 10%;
     display: block;
@@ -267,9 +267,9 @@ body .opening-title-container {
 }
 
 .opening-section-title {
-	font-size: 1.8rem;
-	font-family: Arial, sans-serif;
-	color: blue;
+	font-size: 3rem;
+	font-family: 'Nunito', sans-serif;
+	color: var(--contraste);
 	text-align: center;
 	margin-top: 7%;
 	padding: 1em;
@@ -391,11 +391,63 @@ body .opening-section {
 
 /* Estilos para la imagen de inicio */
 .home-image {
-	width: 25%;
-	height: 100%;
-	object-fit: cover;
+	max-width: 60%;
+	object-fit: fill;
+	justify-self: center;
 }
 
+
+.flex-home {
+	display: grid;
+	grid-template-areas:
+		"title title"
+		"text image";
+	grid-template-columns: 2fr 1fr;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .flex-home {
+        grid-template-areas:
+            "title"
+            "text"
+            "image";
+        grid-template-columns: 1fr;
+    }
+	.opening-section-title {
+		font-size: 1.4rem;
+		font-family: Arial, sans-serif;
+		color: var(--contraste);
+		text-align: center;
+		margin-top: 7%;
+		word-wrap: break-word;
+		margin: 0 auto;
+		border: 0;
+		padding: 0;
+	}
+
+	.flex-home .home-image {
+        grid-area: image;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+		width: auto;
+    }
+
+}
+
+.flex-home .opening-section-title {
+	grid-area: title;
+	word-wrap: break-word;
+}
+
+.flex-home .home-image {
+	grid-area: image;
+}
+
+.flex-home .opening-section-text {
+	grid-area: text;
+}
 /* termina el bloque de css para el video de la página principal */
 
 
@@ -448,6 +500,9 @@ body .modal {
     transition: transform 2s ease, box-shadow 2s ease;
 	text-align: center;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Aumenta el tamaño del proyecto y añade una sombra al hacer hover */
@@ -457,18 +512,31 @@ body .modal {
 	border: 2px solid #000;
 }
 
-.proyecto-list .status {
-    margin-bottom: 1rem;
-	margin-top: 2rem;
-}
-
 .proyecto-list .url {
-    position: absolute;
-    bottom: 10px;
     width: 90%;
+    margin-top: auto; /* Añade esto para empujar el elemento .url hacia abajo */
 }
 
-/* hasta aquí hecho por ahora */
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
+	gap: 30px;
+	margin: 5% 5% 5% 5%;
+}
+
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.20);
+	max-height: 200vh; /* cambiar esto mañana, no funciona */
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
+}
+
+.grid-item:hover {
+    max-height: 100%;
+}
+/* Termina estilos para página de proyectos */
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -521,35 +589,6 @@ code {
     margin-top: 8vh;
 	text-align: center;
 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif  ;
-}
-
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Cambia "3" por "auto-fill" y ajusta el ancho mínimo */
-	gap: 30px;
-	margin: 5% 5% 5% 5%;
-}
-
-.grid-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.20);
-	max-height: 80vh; /* cambiar esto mañana, no funciona */
-	overflow: hidden;
-	transition: max-height 0.5s ease-out;
-}
-
-.grid-item:hover {
-    max-height: 100%;
-}
-
-.home-image {
-	height: auto;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto;
-	max-width: 100%;
-	display: block;
 }
 
 .logo {
@@ -663,6 +702,12 @@ pre {
     }
 }
 /* Bloque de la página de contacto */
+.contacto-boton {
+    width: 200px; /* Cambia esto al ancho que quieras */
+    height: 50px; /* Cambia esto a la altura que quieras */
+    font-size: 1.5rem; /* Cambia esto al tamaño de fuente que quieras */
+    padding: 10px; /* Cambia esto al relleno que quieras */
+}
 
 #contacto-main {
     display: grid;
@@ -785,5 +830,65 @@ body.with-cookie-bar {
 	color: #fff;
 	}
 
+.cookie-info {
+	color: #fff;
+	text-decoration: underline;
+}
 
+#header-container h2, #header-container p {
+	text-align: center;
+}
 
+#header-container h2 {
+	color: rgb(241, 113, 152);
+	font-size: 2rem;
+	margin: 100px 20px; /* Añade margen a la derecha e izquierda */
+}
+
+#header-container p {
+	font-size: 1.5rem;
+	margin: 30px 20px; /* Añade margen a la derecha e izquierda */
+}
+
+@media screen and (min-width: 768px) {
+	#header-container h2 {
+		font-size: 3rem;
+		margin: 130px 40px; /* Aumenta el margen en pantallas más grandes */
+	}
+
+	#header-container p {
+		font-size: 2rem;
+		margin: 90px 40px; /* Aumenta el margen en pantallas más grandes */
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	#header-container h2 {
+		font-size: 4rem;
+		margin: 130px 60px; /* Aumenta el margen en pantallas aún más grandes */
+	}
+
+	#header-container p {
+		font-size: 2.5rem;
+		margin: 90px 60px; /* Aumenta el margen en pantallas aún más grandes */
+	}
+}
+
+#separador {
+    grid-row: 2; /* asigna el separador a la segunda fila */
+    margin-bottom: 50px; /* Añade margen en la parte inferior */
+}
+
+@media screen and (min-width: 768px) {
+    #separador {
+        margin-bottom: 70px; /* Aumenta el margen en pantallas más grandes */
+    }
+}
+
+#anuncio {
+    width: 300px;
+    height: 400px;
+    margin: 100px auto;
+    background-color: #000; /* Centra el anuncio horizontalmente */
+}
+/* termina el bloque de la página de contacto */
