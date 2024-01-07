@@ -13,7 +13,8 @@ from cookie_consent.util import get_cookie_value_from_request
 class ContactoView(View):
     def get(self, request):
         form = ContactForm()
-        return render(request, 'contacto/contacto.html', {'form': form})
+        cookies_accepted = get_cookie_value_from_request(request, "cookie-consent")
+        return render(request, 'contacto/contacto.html', {'form': form, 'cookies_accepted': cookies_accepted})
 
     def post(self, request):
         form = ContactForm(request.POST)
@@ -21,7 +22,7 @@ class ContactoView(View):
             # Validar aceptación de cookies de reCAPTCHA
             cc = get_cookie_value_from_request(request, "cookie-consent")
             if not cc:
-                messages.error(request, "Debes aceptar las cookies de reCAPTCHA")
+                messages.error(request, "Debes aceptar las cookies de AdSense")
                 return redirect('contacto')
             email = EmailMessage(
                 'Nuevo mensaje de contacto',

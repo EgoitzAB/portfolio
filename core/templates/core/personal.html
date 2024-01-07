@@ -16,7 +16,13 @@ Sobre mí
     <section class="opening-section">
         <h2 class="opening-section-title">{{ seccion.seccion | upper }}</h2>
         <p class="opening-section-text">{{ seccion.texto | linebreaksbr }}</p>
+        {% if pdfs and seccion.seccion == "Trabajo" %}
+        <div style="text-align: center; font-size: 1.5em; margin: 1em 1em;">
+            <a href="{{ pdfs.first.file.url }}" download>Descargar {{ pdfs.first.name }}</a>
+        </div>
+        {% endif %}
         <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="home-image">
+
     </section>
 {% endfor %}
 </main>

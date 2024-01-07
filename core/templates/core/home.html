@@ -26,6 +26,11 @@ Egoitz Abilleira
     <div class="opening-section-line flex-home">
     <img src="{{ seccion.imagen.url }}" alt="{{ seccion.imagen.alt }}" class="flex-home home-image">
     <p class="opening-section-text flex-home">{{ seccion.texto | linebreaksbr }}</p>
+    {% if pdfs and seccion.seccion == "Cursos y certificaciones" %}
+      <div class="link-pdf">
+        <a href="{{ pdfs.first.file.url }}" download>Descargar {{ pdfs.first.name }}</a>
+      </div>
+    {% endif %}
     </div>
   </section>
 {% endfor %}

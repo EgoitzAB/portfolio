@@ -26,3 +26,10 @@ class Secciones(models.Model):
 
     def __str__(self):
         return self.seccion
+
+class PDF(models.Model):
+    file = models.FileField(upload_to='pdfs/')
+    name = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from .models import Secciones
+from .models import Secciones, PDF
 from cookie_consent.util import get_cookie_value_from_request
 from contacto.forms import ContactForm
 import uuid
@@ -45,6 +45,7 @@ class HomeView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='main')
+        context['pdfs'] = PDF.objects.all()
         return context
 
 class PersonalView(TemplateView):
@@ -76,4 +77,5 @@ class PersonalView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         context['secciones'] = Secciones.objects.filter(categoria='personal')
+        context['pdfs'] = PDF.objects.all()
         return context

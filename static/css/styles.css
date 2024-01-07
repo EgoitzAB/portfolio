@@ -892,3 +892,8 @@ body.with-cookie-bar {
     background-color: #000; /* Centra el anuncio horizontalmente */
 }
 /* termina el bloque de la página de contacto */
+.link-pdf {
+	text-align: center;
+	font-size: 1.5em;
+	margin: 1em 1em;
+}

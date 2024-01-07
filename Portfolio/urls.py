@@ -8,6 +8,9 @@ from core.sitemaps import StaticViewSitemap as Core_app
 from cursos.sitemaps import CursoSitemap
 from recomendaciones.sitemaps import RecomendadosSitemap
 from contacto.sitemaps import ContactoSitemap
+from django.views.static import serve
+from django.urls import re_path
+
 
 sitemaps = {
     'proyectos': ProyectoSitemap,
@@ -16,6 +19,7 @@ sitemaps = {
     'recomendados': RecomendadosSitemap,
     'contacto': ContactoSitemap,
 }
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +30,7 @@ urlpatterns = [
     path('recomendados/', include("recomendaciones.urls")),
     path('cookies/', include('cookie_consent.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    re_path(r'^robots.txt$', serve, {'path': 'robots.txt', 'document_root': settings.STATIC_ROOT}),
 ]
 
 if settings.DEBUG:

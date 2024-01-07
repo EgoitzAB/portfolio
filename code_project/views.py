@@ -7,6 +7,7 @@ class ProjectListView(ListView):
     model = Proyecto
     template_name = 'code_project/proyecto_list.html'
     context_object_name = 'proyectos'
+    paginate_by = 8
 
 
 class ProyectoDetailView(DetailView):

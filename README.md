@@ -20,7 +20,7 @@ Este proyecto se distribuye bajo la Licencia Pública General de GNU (GNU GPL). 
 
 ## Instalación
 
-Está en proceso, en un par de semanas o algo más lo pongo.
+Está en proceso, por ahora clonarlo y activarlo, no es instalable.
 
 ## Uso
 
@@ -29,13 +29,15 @@ Paso uno, entrar en mi página. Paso dos, ver que estoy preparado para un puesto
 ## Características
 - Todo el CSS ha sido construído desde cero. Hasta ahora usaba frameworks cómo Bootstrap 5 o W3.css. Es lo que más me ha costado.
 - Realizado con Django y la inestimable ayuda de GithubCopilot.
-- Tengo pensado distribuirlo con Docker, aunque realmente lo montaré en mi VPS con Apache2 y SSH seguramente, clonando o copiando desde local.
-- He usado Django-cookie-consent para las cookies, pero espero tener tiempo de desarrollar algo propio para el futuro. Una vez empezado se acaba, aunque la integración me ha costado al principio.
+- Tengo pensado distribuirlo con Docker, aunque realmente lo montaré en mi VPS con Apache2 y SSH seguramente, clonando o copiando desde Github.
+- He usado Django-cookie-consent para las cookies, pero espero tener tiempo de desarrollar algo propio para el futuro. Una vez empezado se acaba, aunque la integración me ha costado al principio. Gracias y mención a los chicos de JazzBand.
 - Los modales y demás elementos móviles los he realizado con Javascript y CSS, aunque acabo de empezar a estudiar éste lenguaje y aún me cuesta un poco.
-- He añadido un recaptcha y la página de afiliación de Amazon cómo ejercicio, y por si cae algo de plata. Seguramente añadiré Google Ads en algún template por los mismos motivos.
+- Voy a añadir en producción la página de afiliación de Amazon y Google Ads cómo ejercicio, y por si cae algo de plata.
 - Ire haciendo CI/CD con Git y Github, pero por ahora solo voy con el CI.
 - He usado PostgreSQL como base de datos, ya que Mysql me ha dado problemas en alguna ocasión.
 - La documentación se genera con Sphinx, aunque con la ayuda de Copilot la haré en el último momento.
+- Se puede descargar el CV personal, y voy a ponerle DarkMode.
+- Sitemap y robots.txt añadido también.
 
 ## Contribución
 
@@ -43,7 +45,7 @@ Se acepta cualquier sugerencia y pull, aun siendo una página personal.
 
 ## Contacto
 
-Proporciona información de contacto para consultas o colaboraciones.
+Pueden contactarme en mis redes o en egoitzabilleira@protonmail.com, aunque en este caso, por aquí en GitHub sería lo mejor.
 
 ## Licencia
 

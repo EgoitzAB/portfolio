@@ -50,15 +50,10 @@ INSTALLED_APPS = [
     'contacto',
     'recomendaciones',
 
-    'django_recaptcha',
     'cookie_consent',
     'taggit',
 
 ]
-
-RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))
-RECAPTCHA_PRIVATE_KEY = str(os.getenv('RECAPTCHA_PRIVATE_KEY'))
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
