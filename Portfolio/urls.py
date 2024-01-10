@@ -10,6 +10,7 @@ from recomendaciones.sitemaps import RecomendadosSitemap
 from contacto.sitemaps import ContactoSitemap
 from django.views.static import serve
 from django.urls import re_path
+from two_factor.urls import urlpatterns as tf_urls
 
 
 sitemaps = {
@@ -31,6 +32,7 @@ urlpatterns = [
     path('cookies/', include('cookie_consent.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     re_path(r'^robots.txt$', serve, {'path': 'robots.txt', 'document_root': settings.STATIC_ROOT}),
+    path('', include(tf_urls)),
 ]
 
 if settings.DEBUG:
