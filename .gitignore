@@ -3,7 +3,8 @@
 .env
 */.env
 /.env
-
+venv
+/venv
 # Ignoring cache
 
 .__pycache__
@@ -29,3 +30,8 @@ media
 ./media
 */media
 media
+
+# Production stuffs
+
+var
+/var
