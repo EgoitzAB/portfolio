@@ -1,0 +1,27 @@
+- Nikto v2.1.5/2.1.5
+- Nikto v2.1.5/2.1.5
++ Target Host: www.egoitzabilleira.es
++ Target Port: 443
++ GET /: Uncommon header 'cross-origin-opener-policy' found, with contents: same-origin
++ GET /: Uncommon header 'strict-transport-security' found, with contents: max-age=31536000; includeSubDomains; preload
++ GET /: Uncommon header 'x-frame-options' found, with contents: DENY
++ GET /: Uncommon header 'referrer-policy' found, with contents: same-origin
++ GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff
++ GET /: Cookie mycookies created without the secure flag
++ GET /: Cookie mycookies created without the httponly flag
++ GET /: Cookie csrftoken created without the secure flag
++ GET /: Cookie csrftoken created without the httponly flag
++ GET /robots.txt: Uncommon header 'content-disposition' found, with contents: inline; filename="robots.txt"
++ GET //admin/: File/dir '/admin/' in robots.txt returned a non-forbidden or redirect HTTP code (302)
++ GET /robots.txt: "robots.txt" contains 1 entry which should be manually viewed.
++ GET /: Server is using a wildcard certificate: '*.egoitzabilleira.es'
++ OPTIONS /: Allowed HTTP Methods: GET, HEAD, OPTIONS 
++ -17113: GET /SilverStream: /SilverStream: SilverStream allows directory listing
++ -27071: GET /phpimageview.php?pic=javascript:alert(8754): /phpimageview.php?pic=javascript:alert(8754): PHP Image View 1.0 is vulnerable to Cross Site Scripting (XSS).  CA-2000-02.
++ -3931: GET /myphpnuke/links.php?op=MostPopular&ratenum=[script]alert(document.cookie);[/script]&ratetype=percent: /myphpnuke/links.php?op=MostPopular&ratenum=[script]alert(document.cookie);[/script]&ratetype=percent: myphpnuke is vulnerable to Cross Site Scripting (XSS). CA-2000-02.
++ GET /modules.php?op=modload&name=FAQ&file=index&myfaq=yes&id_cat=1&categories=%3Cimg%20src=javascript:alert(9456);%3E&parent_id=0: /modules.php?op=modload&name=FAQ&file=index&myfaq=yes&id_cat=1&categories=%3Cimg%20src=javascript:alert(9456);%3E&parent_id=0: Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS). CA-2000-02.
++ GET /modules.php?letter=%22%3E%3Cimg%20src=javascript:alert(document.cookie);%3E&op=modload&name=Members_List&file=index: /modules.php?letter=%22%3E%3Cimg%20src=javascript:alert(document.cookie);%3E&op=modload&name=Members_List&file=index: Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS). CA-2000-02.
++ -4598: GET /members.asp?SF=%22;}alert(223344);function%20x(){v%20=%22: /members.asp?SF=%22;}alert(223344);function%20x(){v%20=%22: Web Wiz Forums ver. 7.01 and below is vulnerable to Cross Site Scripting (XSS). CA-2000-02.
++ -2946: GET /forum_members.asp?find=%22;}alert(9823);function%20x(){v%20=%22: /forum_members.asp?find=%22;}alert(9823);function%20x(){v%20=%22: Web Wiz Forums ver. 7.01 and below is vulnerable to Cross Site Scripting (XSS). CA-2000-02.
++ GET /sitemap.xml: Uncommon header 'x-robots-tag' found, with contents: noindex, noodp, noarchive
++ -3092: GET /sitemap.xml: /sitemap.xml: This gives a nice listing of the site content.

@@ -58,27 +58,18 @@ window.onclick = function(event) {
   }
 }
 
-const btn = document.querySelector(".btn-toggle");
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+document.addEventListener('DOMContentLoaded', (event) => {
+  const btn = document.querySelector(".btn-toggle");
 
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-} else if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
-}
-
-btn.addEventListener("click", function () {
-  if (prefersDarkScheme.matches) {
-    document.body.classList.toggle("light-theme");
-    var theme = document.body.classList.contains("light-theme")
-      ? "light"
-      : "dark";
-  } else {
-    document.body.classList.toggle("dark-theme");
-    var theme = document.body.classList.contains("dark-theme")
-      ? "dark"
-      : "light";
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme == "dark") {
+    document.body.classList.add("dark");
   }
-  localStorage.setItem("theme", theme);
+
+  btn.addEventListener("click", function () {
+    console.log("Button clicked");
+    document.body.classList.toggle("dark");
+    var theme = document.body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+  });
 });

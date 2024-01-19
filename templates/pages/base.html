@@ -17,7 +17,7 @@
         {% static "cookie_consent/cookiebar.module.js" as cookiebar_src %}
     </head>
     <body>
-    <button class="btn-toggle">Toggle Dark-Mode</button>
+    <button class="btn-toggle">Modo oscuro/Modo claro</button>
         {% block navbar %}
 
         {% endblock navbar %}
@@ -28,7 +28,9 @@
 
         {% endblock footer %}
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
-        {% include 'pages/footer.html' %}
+        {% block footer_include %}
+            {% include 'pages/footer.html' %}
+        {% endblock footer_include %}
         {% if request|cookie_consent_enabled %}
         {% not_accepted_or_declined_cookie_groups request as cookie_groups %}
 

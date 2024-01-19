@@ -1,0 +1,13 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<h1>¡Éxito!</h1>
+<p>Tu formulario ha sido enviado con éxito. Serás redirigido en unos segundos...</p>
+
+<script>
+setTimeout(function(){
+    window.location.href = "{% url 'contacto:contacto' %}";
+}, 5000);
+</script>
+{% endblock content %}
+{% block footer_include %}
+{% endblock footer_include %}

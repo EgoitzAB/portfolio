@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models import Max
 # Create your models here.
 class Secciones(models.Model):
     """
@@ -14,6 +14,7 @@ class Secciones(models.Model):
     """
 
     seccion = models.CharField(max_length=50)
+    indice = models.IntegerField(blank=True, null=True)
     texto = models.TextField()
     imagen = models.ImageField(upload_to='secciones', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -24,6 +25,16 @@ class Secciones(models.Model):
     ]
     categoria = models.CharField(max_length=10, choices=categoria_choices, default='main')
 
+    class Meta:
+        ordering = ['indice']
+
+    def save(self, *args, **kwargs):
+        if self.indice is None:
+            aggregate_result = Secciones.objects.aggregate(Max('indice'))
+            max_indice = aggregate_result['indice__max'] if 'indice__max' in aggregate_result else 0
+            self.indice = max_indice + 1
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.seccion
 
@@ -33,3 +44,4 @@ class PDF(models.Model):
 
     def __str__(self):
         return self.name
+

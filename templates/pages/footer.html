@@ -1,14 +1,14 @@
 <footer>
     <div class="footer-links">
         <a href="{{ url_cookies }}">Cookies policy</a>
-        <a href="{{ url_privacy }}">Política de privacidad</a>
-        <a href="{{ url_terms }}">Terminos de uso</a>
+        <a href="{% url 'core:privacy_policy' %}">Política de privacidad</a>
+        <a href="{% url 'core:terms_of_use' %}">Terminos de uso</a>
         <a href="{% url 'contacto:contacto' %}">Contacto</a>
         <a href="{% url 'core:personal' %}">Sobre mí</a>
         <a href="{% url 'sitemap' %}">Sitemap</a>
     </div>
     <div class="footer-form">
-        <form action="{{ url_contact }}" method="post">
+        <form action="{{ url_contact }}" method="post" action="{% url 'contacto:contacto' %}">
             {% csrf_token %}
             {{ form.as_ul }}
             <input type="submit" value="Enviar">

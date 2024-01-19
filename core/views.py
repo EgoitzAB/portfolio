@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views import generic
 from .models import Secciones, PDF
 from cookie_consent.util import get_cookie_value_from_request
-from contacto.forms import ContactForm
 import uuid
 
 
@@ -44,7 +43,7 @@ class HomeView(TemplateView):
 
         """
         context = super().get_context_data(**kwargs)
-        context['secciones'] = Secciones.objects.filter(categoria='main')
+        context['secciones'] = Secciones.objects.filter(categoria='main').order_by('indice')
         context['pdfs'] = PDF.objects.all()
         return context
 
@@ -76,6 +75,14 @@ class PersonalView(TemplateView):
 
         """
         context = super().get_context_data(**kwargs)
-        context['secciones'] = Secciones.objects.filter(categoria='personal')
+        context['secciones'] = Secciones.objects.filter(categoria='personal').order_by('indice')
         context['pdfs'] = PDF.objects.all()
         return context
+
+
+class TermsOfUseView(generic.TemplateView):
+    template_name = 'core/terminos_de_uso.html'
+
+
+class PrivacidadView(generic.TemplateView):
+    template_name = 'core/privacidad.html'

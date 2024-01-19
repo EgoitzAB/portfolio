@@ -9,7 +9,8 @@ Página de contacto
 {% endblock title %}
 {% block extrahead %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2535476345777598" crossorigin="anonymous"></script>
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 {% endblock extrahead %}
 {% block navbar %}
 {% include 'pages/navbar.html' %}
@@ -22,7 +23,7 @@ Página de contacto
         <p>Aquí puedes encontrar diferentes maneras de ponerte en contacto conmigo. Por favor, rellena el formulario de contacto o utiliza los enlaces de mis redes sociales que se encuentran a continuación. Estaré encantado de atender cualquier propuesta.</p>
     </div>
     <div id="separador"></div>
-<form id="contacto-form" method="post">
+<form id="contacto-form" method="post" action="{% url 'contacto:contacto' %}">
 <h1>Contacto</h1>
     {% csrf_token %}
     {{ form.as_p }}
@@ -35,11 +36,14 @@ Página de contacto
     <a href="https://www.github.com/egoitzab" target="_blank" class="social-link">
         <i class="fab fa-github fa-3x"></i> Github
     </a>
-    <div id="anuncio">
-        {% if cookies_accepted %}
-            <!-- Aquí va el código de AdSense -->
-        {% endif %}
-    </div>
+    <amp-ad width="100vw" height="320"
+    type="adsense"
+    data-ad-client="ca-pub-2535476345777598"
+    data-ad-slot="2403857351"
+    data-auto-format="rspv"
+    data-full-width="">
+        <div overflow=""></div>
+    </amp-ad>
 </div>
 </main>
 {% endblock content %}

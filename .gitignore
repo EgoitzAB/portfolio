@@ -29,3 +29,10 @@ media
 ./media
 */media
 media
+
+#Ignoring the DB backup
+.sql
+*.sql
+
+var
+
